@@ -1,7 +1,7 @@
 import argparse
 
 from .client import VSphereClient, VSphereClientException, VSphereClientBuilderException, VSphereClientBuilder
-from .cli import cmd_get
+from .cli import cmd_get, VALID_GETTERS
 
 CMD = 'vsphere'
 

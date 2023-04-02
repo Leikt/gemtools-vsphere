@@ -3,6 +3,8 @@ from typing import Optional
 
 from gemtoolsconfig import Configurations, preset_file_loader
 
+VALID_GETTERS = ['all', 'hosts', 'vms', 'vm-summaries']
+
 
 def cmd_get(args):
     # Load configuration
@@ -13,5 +15,5 @@ def cmd_get(args):
     config = Configurations.get_config()
 
     # Read configuration
-    for conf_client in config['clients']:
+    for conf_client in config['client']:
         print(conf_client)
