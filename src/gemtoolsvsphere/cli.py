@@ -1,6 +1,3 @@
-from pathlib import Path
-from typing import Optional
-
 from gemtoolsconfig import Configurations, preset_file_loader
 from gemtoolsio import decrypt
 
@@ -13,10 +10,10 @@ def _load_config(args):
     config = Configurations.load_config(path=args.config.name)
 
     # Decrypt passwords
-    password_key: Optional[Path] = args.config_password_key
-    if password_key is not None:
+    if args.config_password_key is not None:
+        password_key: bytes = args.config_password_key.read_bytes()
         for conf_client in config['client']:
-            conf_client['password'] = decrypt(conf_client['password'], password_key.read_bytes())
+            conf_client['password'] = decrypt(conf_client['password'], password_key)
 
     return config
 
