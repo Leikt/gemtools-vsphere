@@ -1,2 +1,2 @@
-gemtoolsconfig @ git+https://github.com/Leikt/gemtools-config.git@v1.0.4
+gemtoolsconfig @ git+https://github.com/Leikt/gemtools-config.git@master
 requests==2.28.2
