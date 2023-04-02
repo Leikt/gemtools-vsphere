@@ -30,8 +30,8 @@ def main(args: list[str]):
     # >>> Getters parser
     parser_getters = subparsers_main.add_parser('get', parents=[parser_config], conflict_handler='resolve')
     parser_getters.description = 'Get information from the vSphere API.'
-    parser_getters.add_argument('getter', type=str, choices=[],
-                                help='Which getter to use. Use --print-details to display the possibile getters.')
+    parser_getters.add_argument('getter', type=str, choices=VALID_GETTERS,
+                                help='Which getter to use.')
     parser_getters.add_argument('--verbose', '-v', action='count', default=0, help='Increase the log verbosity.')
     parser_getters.add_argument('--output-file', '-o', type=Path,
                                 help='File or directory where to store the getter result. Depends on the getter.')
