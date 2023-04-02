@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gemtoolsvsphere"
+version = "1.0.0"
+authors = [
+    { name = "Robin LIORET", email = "robin.lioret@capgemini.com" }
+]
+description = "A Generic Managment Tool package use to interact with a vSphere server."
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent"
+]
+dependencies = [
+    "gemtoolsconfig @ git+https://github.com/Leikt/gemtools-config.git@v1.0.0"
+]
+
+#[project.urls]
+#"Homepage" = "https://github.com/Leikt/gemtools-io"
+#"Bug Tracker" = "https://github.com/Leikt/gemtools-io/issues"

@@ -1,0 +1,9 @@
+.env
+.idea
+.obsidian
+*.iml
+
+# Ignore python generated elements
+__pycache__
+*.egg-info
+dist
