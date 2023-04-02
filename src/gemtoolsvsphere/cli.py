@@ -2,6 +2,7 @@ from pathlib import Path
 from typing import Optional
 
 from gemtoolsconfig import Configurations, preset_file_loader
+from gemtoolsio import decrypt
 
 VALID_GETTERS = ['all', 'hosts', 'vms', 'vm-summaries']
 
@@ -15,5 +16,8 @@ def cmd_get(args):
     config = Configurations.get_config()
 
     # Read configuration
+    password_key: Optional[Path] = args.config_password_key
     for conf_client in config['client']:
+        if password_key is not None:
+            conf_client['password'] = decrypt(conf_client['password'], password_key.read_bytes())
         print(conf_client)

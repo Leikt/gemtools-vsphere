@@ -22,10 +22,13 @@ def main(args: list[str]):
     # Configuration group
     parser_config = argparse.ArgumentParser()
     group = parser_config.add_argument_group('Configuration')
-    group.add_argument('--config', type=Path, required=True,
+    group.add_argument('--config', '-C', type=Path, required=True,
                        help='Configuration file.')
-    group.add_argument('--config-key', type=Path,
+    group.add_argument('--config-key', '--CK', type=Path,
                        help='Encryption key for the configuration file. Required if the configuration is encrypted.')
+    group.add_argument('--config-password-key', '--CPK', type=Path,
+                       help='Encryption key for the passwords in the configuration file. Required if password are'
+                            'encrypted within the configuration file.')
 
     # >>> Getters parser
     parser_getters = subparsers_main.add_parser('get', parents=[parser_config], conflict_handler='resolve')
