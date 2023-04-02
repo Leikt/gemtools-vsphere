@@ -7,17 +7,20 @@ from gemtoolsio import decrypt
 VALID_GETTERS = ['all', 'hosts', 'vms', 'vm-summaries']
 
 
-def cmd_get(args):
+def _load_config(args):
     # Load configuration
-    file: Path = args.config
-    key: Optional[Path] = args.config_key
-    Configurations.add_loader(preset_file_loader(file.parent, key))
-    Configurations.load_config(path=file.name)
-    config = Configurations.get_config()
+    Configurations.add_loader(preset_file_loader(args.config.parent, args.config_key))
+    config = Configurations.load_config(path=args.config.name)
 
-    # Read configuration
+    # Decrypt passwords
     password_key: Optional[Path] = args.config_password_key
-    for conf_client in config['client']:
-        if password_key is not None:
+    if password_key is not None:
+        for conf_client in config['client']:
             conf_client['password'] = decrypt(conf_client['password'], password_key.read_bytes())
-        print(conf_client)
+
+    return config
+
+
+def cmd_get(args):
+    config = _load_config(args)
+    print(config)
