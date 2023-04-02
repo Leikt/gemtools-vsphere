@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "gemtoolsvsphere"
-version = "1.0.0"
+version = "0.0.1"
 authors = [
     { name = "Robin LIORET", email = "robin.lioret@capgemini.com" }
 ]
@@ -18,7 +18,8 @@ classifiers = [
     "Operating System :: OS Independent"
 ]
 dependencies = [
-    "gemtoolsconfig @ git+https://github.com/Leikt/gemtools-config.git@v1.0.0"
+    "gemtoolsconfig @ git+https://github.com/Leikt/gemtools-config.git@v1.0.3",
+    "requests==2.28.2"
 ]
 
 #[project.urls]
